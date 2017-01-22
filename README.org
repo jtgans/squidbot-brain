@@ -1,0 +1,37 @@
+* Squidbot's Brain
+
+This is the core logic service that contains all of the modules that react to
+the various delivery frontends. Which modules you end up using is exposed via a
+TOML file called `config.toml`.
+
+** Squidbot's Design
+
+Squidbot is a modular bot architecture written in Go, and designed to run on a
+kubernetes cluster. In my case, it's a stack of six Raspberry Pi 3 boards, with
+an Intel NUC running as the master.
+
+#+BEGIN_SRC ditaa :file design.png :cmdline -r
++----------+ +-----+ +------+
+| Flowdock | | IRC | | XMPP |
++----------+ +-----+ +------+
+     |          |       |
+     +----------+-------+
+                |
+            +-------+
+            | Brain |
+            +-------+
+#+END_SRC
+
+** License
+
+This is licensed under the [[https://www.tldrlegal.com/l/fair][Fair License]]:
+
+#+BEGIN_QUOTE
+Copyright (C) 2017, June Tate-Gans
+
+Usage of the works is permitted provided that this instrument is retained with
+the works, so that any entity that uses the works is notified of this
+instrument.
+
+DISCLAIMER: THE WORKS ARE WITHOUT WARRANTY.
+#+END_QUOTE
