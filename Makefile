@@ -9,10 +9,18 @@ squidbot-brain-rpi: $(SRCS)
 squidbot-brain: $(SRCS)
 	go build
 
+docker: squidbot-brain
+	docker build . --force-rm --tag jtgans/squidbot-brain:latest
+
+docker-rpi: squidbot-brain-rpi
+	docker build . -f Dockerfile.rpi --force-rm --tag jtgans/squidbot-brain-rpi:latest
+
+docker-all: docker docker-arm
+
 clean:
-	-rm squidbot-brain squidbot-brain-rpi
+	rm -f squidbot-brain squidbot-brain-rpi
 
 mrclean: clean
-	-find -name \*~ -exec rm -f '{}' ';'
+	find -name \*~ -exec rm -f '{}' ';'
 
-.PHONY: all clean mrclean
+.PHONY: all clean mrclean docker docker-arm docker-all

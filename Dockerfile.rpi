@@ -1,0 +1,10 @@
+FROM jtgans/picluster-cross:latest
+
+RUN apk update && \
+apk upgrade && \
+apk add bash && \
+rm -rf /var/cache/apk/*
+
+COPY squidbot-brain-rpi /usr/bin/squidbot-brain
+
+CMD ["/usr/bin/squidbot-brain"]
