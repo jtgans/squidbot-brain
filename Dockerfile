@@ -6,4 +6,5 @@ rm -rf /var/cache/apt/*
 
 COPY squidbot-brain /usr/bin/squidbot-brain
 
-ENTRYPOINT ["/usr/bin/squidbot-brain"]
+ENTRYPOINT [ "/usr/bin/squidbot-brain" ]
+CMD [ "--help" ]
