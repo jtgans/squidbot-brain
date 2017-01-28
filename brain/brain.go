@@ -46,8 +46,16 @@ func (brain *BrainServer) Run() {
 	}
 }
 
+func (s *BrainServer) FrontendStarted(ctx context.Context, in *pb.FrontendRequest) (*pb.FrontendResponse, error) {
+	log.Println("New frontend started: %v version %v", in.FrontendName, in.FrontendVersion)
+
+	return &pb.FrontendResponse {
+		BrainVersion: version,
+	}, nil
+}
+
 func (s *BrainServer) OnNewMessage(ctx context.Context, in *pb.MessageRequest) (*pb.MessageResponse, error) {
-	return &pb.MessageResponse{
+	return &pb.MessageResponse {
 		UniqueId: in.UniqueId,
 		MessageBody: "Hi. I'mma squidbot!",
 	}, nil
