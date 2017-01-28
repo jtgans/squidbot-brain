@@ -7,4 +7,6 @@ rm -rf /var/cache/apk/*
 
 COPY squidbot-brain-rpi /usr/bin/squidbot-brain
 
-CMD ["/usr/bin/squidbot-brain"]
+ENTRYPOINT [ "/usr/bin/squidbot-brain" ]
+CMD [ "--help" ]
+
